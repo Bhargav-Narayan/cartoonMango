@@ -1,0 +1,121 @@
+<html ng-app='scrap'>
+<head>
+	<title>Scrapping</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+</head>
+<style>
+	body{
+		padding-top: 20px;
+		padding-bottom: 20px;
+		text-align: center;
+	}
+
+	ul{
+		width: 400px;
+		height: auto;
+		max-height: 300px;
+		overflow-y: scroll;
+		background: white;
+		cursor: pointer;
+		text-align: center;
+		padding: 0;
+		box-shadow: 2px 2px 20px gray;
+	}
+
+	li{
+		list-style: none;
+		padding-bottom: 15px;
+		border-bottom: 1px solid gray;
+	}
+
+	input{
+		position: absolute;
+		top: 20%;
+		left: 31%;
+		width: 400px;
+		border-radius: 10px;
+		border:none;
+		padding: 5px;
+	}
+
+	.searchList{
+		
+		width: 100%;
+		height: 20%;
+		position: absolute;
+		top:40px;
+		left: 31%; 
+
+	}
+	.movie{
+		width: 100%;
+		height: 95%;
+		position: absolute;
+		top:15%;
+	}
+	.search{
+
+		width: 100%;
+		height: 10%;
+		position: absolute;
+		top:0;
+		background: #666666;
+	}
+	.wrapper{
+		margin: auto;
+		width: 80%;
+		height: 100%;
+	
+		overflow-y: scroll;
+		overflow-x:hidden;
+		position: relative;
+		background: white;
+		box-shadow: 5px 5px 50px gray;
+	}
+	#desc{
+		
+		margin: auto;
+		width: 65%;
+		text-align: center;
+	}
+
+	img{
+		margin-bottom: 10px;
+	}
+	#rate{
+		background: yellow;
+	}
+</style>
+<body>
+	<div class='wrapper' ng-controller='searchCtrl'>
+		
+
+		<div class='search'>
+			<input type="text" placeholder='Search movies here' ng-model='search' ng-keyup='searchingFun()'>
+		</div>
+		
+		<div class='movie'>
+			<h1>{{result[0]}}</h1>
+			<p><strong id='rate'>{{result[1]}}</strong></p>
+			<img src="{{result[3]}}" alt="{{result[0]}}">
+			<p id='desc'>{{result[2]}}</p>
+			
+		</div>
+
+
+		<div class='searchList'>
+			<ul>
+				
+				<li ng-repeat='film in dynamicData'><strong style='text-decoration:underline;' ng-click='scrapping($event)' data-id='{{film.anchor}}'>{{film.name}}</strong></li>
+			</ul>
+		</div>
+	</div>
+	
+
+	<script src="script/angular.js"></script>
+	<script src="script/angular-resource.js"></script>
+	<script src="script/bootstrap.js"></script>
+	<script src="script/jquery.js"></script>
+	<script src="script/scrap.js"></script>
+</body>
+</html>
