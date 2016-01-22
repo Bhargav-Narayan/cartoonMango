@@ -87,6 +87,6 @@ app.get('/details/:id',function(req,res){
 
 
 
-
-app.listen(4334);
-console.log(4334);
+var port = Number(env.process.port||4334)
+app.listen(port);
+console.log(port);
